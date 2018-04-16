@@ -21,7 +21,7 @@ public class HotelEditForm extends FormLayout {
 	private DateField operatesFrom = new DateField("Date");
 	private NativeSelect<HotelCategory> category = new NativeSelect<>("Category");
 	private TextField url = new TextField("URL");
-
+	private TextField description = new TextField("Description");
 	private Button save = new Button("Save");
 	private Button close = new Button("Close");
 	
@@ -32,7 +32,7 @@ public class HotelEditForm extends FormLayout {
 		HorizontalLayout buttons = new HorizontalLayout();
 		buttons.addComponents(save, close);
 		
-		addComponents(name, address, rating, operatesFrom, category, url, buttons);
+		addComponents(name, address, rating, operatesFrom, category, url, description, buttons);
 		binder.bindInstanceFields(this);
 		
 		category.setItems(HotelCategory.values());

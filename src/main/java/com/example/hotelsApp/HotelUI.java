@@ -64,6 +64,9 @@ public class HotelUI extends UI {
         id.setCaption("Id");
         Column<Hotel, LocalDate> date = grid.addColumn(Hotel::getOperatesFrom);
         date.setCaption("Date");
+        Column<Hotel, String> description = grid.addColumn(Hotel::getDescription);
+        description.setCaption("Description");
+
         
         grid.setWidth(800, Unit.PIXELS);
         
@@ -102,17 +105,19 @@ public class HotelUI extends UI {
     }
     
     public void updateListForName() {
+    	deleteHotel.setEnabled(false);
     	List<Hotel> hotelList = hotelService.findName(filterName.getValue());
     	grid.setItems(hotelList);
     }
     
     public void updateListForAddress() {
+    	deleteHotel.setEnabled(false);
     	List<Hotel> hotelList = hotelService.findAddress(filterAddress.getValue());
     	grid.setItems(hotelList);
     }
     
     public void updateList() {
-		grid.setItems(hotelService.findAll());
+		grid.setItems(hotelService.findAll());	
 	}
 
     @WebServlet(urlPatterns = "/*", name = "HotelUIServlet", asyncSupported = true)
